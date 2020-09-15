@@ -7,16 +7,27 @@ export default class Form extends React.Component {
     this.state = {
       method: '',
       url: '',
-      stuff: '',
     };
   }
 
+  // keep working on this
+  handleSubmit = async event => {
+    event.preventDefault();
+    let raw = await fetch(this.state.url);
+    let headers = {};
+    raw.headers.forEach((val, key) => headers[key] = val)
+    let data = await raw.json();
+    let count = data.count;
+    let results = data.results;
+    this.props.handler(count, results, headers);
+  };
+
   handleUrl = e => {
-    e.preventDefault();
     let url = e.target.value;
     this.setState({ url });
   };
 
+  // Do I need this?
   handleMethod = e => {
     e.preventDefault();
     let method = e.target.value;
@@ -25,17 +36,16 @@ export default class Form extends React.Component {
 
   handleClick = e => {
     e.preventDefault();
-    this.setState({
-      stuff: `Method: ${this.state.method} \n Url: ${this.state.url}`
-    });
+    let url = this.state.url
+    this.setState({ url });
   };
 
   render() {
     return (
-      <form className="Form" onSubmit={this.handleClick}>
+      <form className="Form" onSubmit={this.handleSubmit}>
         <div id="enterstuff">
-          <input placeholder="Enter URL here" onChange={this.handleUrl} />
-          <button>Submit</button>
+          <input placeholder="URL" onChange={this.handleUrl} />
+          <button onClick={this.handleClick}>Submit</button>
         </div>
         <div onChange={this.handleMethod} id="radio">
           <input type="radio" name="rest" id="Get" value="Get"></input>
@@ -46,9 +56,6 @@ export default class Form extends React.Component {
           <label for="Post">Post</label>
           <input type="radio" name="rest" id="Delete" value="Delete" ></input>
           <label for="Delete">Delete</label>
-        </div>
-        <div className="Main">
-          <h3>{this.state.stuff}</h3>
         </div>
       </form>
     );
