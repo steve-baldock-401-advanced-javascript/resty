@@ -25,10 +25,9 @@ export default class Form extends React.Component {
 
   handleClick = e => {
     e.preventDefault();
-    // this.setState(())
-    this.setState(() => {
-      this.state.stuff = `Method: ${this.state.method} \n Url: ${this.state.url}`;
-    })
+    this.setState({
+      stuff: `Method: ${this.state.method} \n Url: ${this.state.url}`
+    });
   };
 
   render() {
@@ -38,7 +37,6 @@ export default class Form extends React.Component {
           <input placeholder="Enter URL here" onChange={this.handleUrl} />
           <button>Submit</button>
         </div>
-
         <div onChange={this.handleMethod} id="radio">
           <input type="radio" name="rest" id="Get" value="Get"></input>
           <label for="Get">Get</label>
