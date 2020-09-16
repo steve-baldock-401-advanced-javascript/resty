@@ -8,16 +8,21 @@
   margin-top: 30px;
   width: 100%;
 
+    #enterstuff{
+        #inputurl {
+          margin-left: 20px;
+          margin-right: 10px;
+          width: 50%;
+        }
+    }
     #radio {
       margin-left: 20px;
       margin-top: 10px;
-      width: 50%;
-    }
-
-    #inputurl {
-      margin-left: 20px;
-      margin-right: 10px;
-      width: 50%;
+      width: 100%;
+        #addStuff {
+          margin-left: 20px;
+          width: 38%;
+        }
     }
 
 }
