@@ -26,6 +26,7 @@ class App extends React.Component {
       <>
         <Header />
         <Form handleClick={this.handleForm} />
+        {/* <History /> */}
         <Results count={this.state.count} results={this.state.results} headers={this.state.headers} />
         <Footer />
       </>

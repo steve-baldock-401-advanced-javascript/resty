@@ -1,5 +1,5 @@
 .Form {
-  align-items: center;
+  // align-items: center;
   background-color: #FFF;
   color: maroon;
   display: flex;
@@ -9,19 +9,16 @@
   width: 100%;
 
     #radio {
+      margin-left: 20px;
       margin-top: 10px;
-    }
-    .Main {
-      background-color: rgb(233, 173, 152);
-      border: 2px solid brown;
-      border-radius: 5px;
-      margin: 20px;
-      min-height: 50vh;
-      align-items: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
       width: 50%;
     }
+
+    #inputurl {
+      margin-left: 20px;
+      margin-right: 10px;
+      width: 50%;
+    }
+
 }
 
