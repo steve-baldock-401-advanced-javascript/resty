@@ -44,7 +44,7 @@ export default class Form extends React.Component {
     return (
       <form className="Form" onSubmit={this.handleSubmit}>
         <div id="enterstuff">
-            <input type="text" placeholder="url" onChange={this.handleUrl} />
+            <input id="inputurl" type="text" placeholder="url" onChange={this.handleUrl} />
             <button>Submit</button>
         </div>
         <div onChange={this.handleMethod} id="radio">
@@ -56,6 +56,7 @@ export default class Form extends React.Component {
           <label for="Post">Post</label>
           <input type="radio" name="rest" id="Delete" value="Delete" ></input>
           <label for="Delete">Delete</label>
+          <input id="addStuff" placeholder="Add Body Here" type="text"></input>
         </div>
       </form>
     );
