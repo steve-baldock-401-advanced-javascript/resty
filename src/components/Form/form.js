@@ -15,7 +15,7 @@ export default class Form extends React.Component {
     event.preventDefault();
     let raw = await fetch(this.state.url);
     let headers = {};
-    raw.headers.forEach((val, key) => headers[key] = val)
+    raw.headers.forEach((val, key) => headers[key] = val);
     let data = await raw.json();
     let count = data.count;
     let results = data.results;
@@ -44,8 +44,8 @@ export default class Form extends React.Component {
     return (
       <form className="Form" onSubmit={this.handleSubmit}>
         <div id="enterstuff">
-          <input placeholder="URL" onChange={this.handleUrl} />
-          <button onClick={this.handleClick}>Submit</button>
+            <input type="text" placeholder="url" onChange={this.handleUrl} />
+            <button>Submit</button>
         </div>
         <div onChange={this.handleMethod} id="radio">
           <input type="radio" name="rest" id="Get" value="Get"></input>

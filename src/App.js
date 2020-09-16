@@ -25,7 +25,7 @@ class App extends React.Component {
     return (
       <>
         <Header />
-        <Form handler={this.handleForm} />
+        <Form handleClick={this.handleForm} />
         <Results count={this.state.count} results={this.state.results} headers={this.state.headers} />
         <Footer />
       </>
