@@ -5,29 +5,29 @@ import Header from './components/Header/header.js';
 import Footer from './components/Footer/footer.js';
 import Form from './components/Form/form.js';
 import Results from './components/results/results.js';
+import History from './components/history/history.js';
 
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      count: 0,
-      results: [],
-      headers: {},
+      results: null,
+      headers: null,
     };
   }
 
-  handleForm = (count, results, headers) => {
-    this.setState({ count, results, headers });
+  handleForm = (results, headers) => {
+    this.setState({ results, headers });
   };
 
   render() {
     return (
       <>
         <Header />
-        <Form handleClick={this.handleForm} />
-        {/* <History /> */}
-        <Results count={this.state.count} results={this.state.results} headers={this.state.headers} />
+        <Form handler={this.handleForm} />
+        <History />
+        <Results results={this.state.results} headers={this.state.headers} />
         <Footer />
       </>
     );

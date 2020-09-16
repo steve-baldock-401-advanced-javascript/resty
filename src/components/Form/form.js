@@ -1,5 +1,6 @@
 import React from 'react';
 import './form.scss';
+import axios from "axios";
 
 export default class Form extends React.Component {
   constructor(props) {
@@ -13,13 +14,13 @@ export default class Form extends React.Component {
   // keep working on this
   handleSubmit = async event => {
     event.preventDefault();
-    let raw = await fetch(this.state.url);
-    let headers = {};
-    raw.headers.forEach((val, key) => headers[key] = val);
-    let data = await raw.json();
-    let count = data.count;
-    let results = data.results;
-    this.props.handler(count, results, headers);
+    let raw = await axios({
+      url: this.state.url,
+      method: this.state.method});
+    let headers = raw.headers;
+    let results = raw.data;
+    console.log('results', raw)
+    this.props.handler(results, headers);
   };
 
   handleUrl = e => {
@@ -49,14 +50,14 @@ export default class Form extends React.Component {
         </div>
         <div onChange={this.handleMethod} id="radio">
           <input type="radio" name="rest" id="Get" value="Get"></input>
-          <label for="Get">Get</label>
+          <label forhtml="Get">Get</label>
           <input type="radio" name="rest" id="Put" value="Put"  ></input>
-          <label for="Put">Put</label>
+          <label forhtml="Put">Put</label>
           <input type="radio" name="rest" id="Post" value="Post" ></input>
-          <label for="Post">Post</label>
+          <label forhtml="Post">Post</label>
           <input type="radio" name="rest" id="Delete" value="Delete" ></input>
-          <label for="Delete">Delete</label>
-          <input id="addStuff" placeholder="Add Body Here" type="text"></input>
+          <label forhtml="Delete">Delete</label>
+          <textarea id="addStuff" placeholder="Add Body Here" rows="1" type="text"></textarea>
         </div>
       </form>
     );
