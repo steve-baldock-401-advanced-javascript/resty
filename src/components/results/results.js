@@ -1,19 +1,29 @@
 import React from 'react';
 import './results.scss';
 import ReactJson from 'react-json-view';
+// import { If, The, Else, When } from '../spin.js';
+
 
 const Results = (props) => {
+
   return(
-  
-    <div className="results">
-      { props.headers?
-      <>
-        <ReactJson src={props.headers} />
-        <ReactJson src={props.results} /> 
-      </> : 
-      null }
-    </div>
+    <section className="results">
+      { 
+        props.loading ? (
+          <div className="loading">
+            <img src="https://media.giphy.com/media/IwSG1QKOwDjQk/giphy.gif" alt="loading" />
+          </div>
+        ) : (
+        props.headers ?
+        <>
+          <h4>Headers</h4>
+          <ReactJson src={props.headers} />
+          <h4>Results</h4>
+          <ReactJson src={props.results} /> 
+        </> : 
+        null )}
+    </section>
   )
 } 
 
-export default Results
+export default Results;

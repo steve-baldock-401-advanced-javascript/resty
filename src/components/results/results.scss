@@ -3,5 +3,24 @@
   border-radius: 10px;
   height: 50vh;
   margin: 20px;
-  margin-left: 50%;
+  overflow: auto;
+  width: 50%; 
+    h4{
+      color:  rgb(77, 74, 74);
+      margin-top: 0;
+      text-align: center;
+    }
+    #apiResults{
+      font-size: .25em;
+    }
 }
+
+.loading {
+  text-align: center;
+  img {
+    height: 50px;
+    margin-top: 15%;
+    width: 50px;
+  }
+}
+

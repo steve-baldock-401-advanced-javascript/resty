@@ -1,12 +1,12 @@
 .Footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
   align-items: center;
   background-color: rgb(147, 141, 141);
+  bottom: 0;
   color: maroon;
   display: flex;
   flex-direction: column;
+  font-size: .25em;
   justify-content: center;
+  position: fixed;
   width: 100%;
 }
