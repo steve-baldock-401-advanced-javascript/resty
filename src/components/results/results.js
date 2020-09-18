@@ -1,7 +1,7 @@
 import React from 'react';
 import './results.scss';
 import ReactJson from 'react-json-view';
-// import { If, The, Else, When } from '../spin.js';
+
 
 
 const Results = (props) => {

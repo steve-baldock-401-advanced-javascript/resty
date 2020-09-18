@@ -29,52 +29,27 @@ function Form(props) {
 
   const changeBody = (e) => {
     try {
-      let data = JSON.parse(e.target.value);
+      let data = e.target.value;
       setRequest({ ...request, data });
     } catch (e) {}
+  
   };
 
   // Handles form submission
   const handleSubmit = async e => {
     e.preventDefault();
-    props.handler(request);
+    let { method, url, data } = request;
+    if(data){
+      data=JSON.parse(data);
+    }
+    props.handler({method, url, data});
   };
-
-  // keep working on this
-  // handleSubmit = async event => {
-  //   event.preventDefault();
-  //   let raw = await axios({
-  //     url: this.state.url,
-  //     method: this.state.method});
-  //   let headers = raw.headers;
-  //   let results = raw.data;
-  //   console.log('results', raw)
-  //   this.props.handler(results, headers);
-  // };
-
-  // handleUrl = e => {
-  //   let url = e.target.value;
-  //   this.setState({ url });
-  // };
-
-  // // Do I need this?
-  // handleMethod = e => {
-  //   e.preventDefault();
-  //   let method = e.target.value;
-  //   this.setState({ method });
-  // };
-
-  // handleClick = e => {
-  //   e.preventDefault();
-  //   let url = this.state.url
-  //   this.setState({ url });
-  // };
 
 
     return (
       <form className="Form" onSubmit={handleSubmit}>
         <div id="enterstuff">
-            <input id="inputurl" type="text" name="url" placeholder="url" onChange={changeURL} />
+            <input id="inputurl" type="text" name="url" placeholder="url" defaultValue={request.url} onChange={changeURL} />
             <button>Submit</button>
         </div>
         <div id="radio">
@@ -86,7 +61,7 @@ function Form(props) {
           <label forhtml="Post">Post</label>
           <input type="radio" name="rest" id="Delete" value="Delete" onClick={() => changeMethod('delete')} />
           <label forhtml="Delete">Delete</label>
-          <textarea id="addStuff" name="date" placeholder="Add Body Here" rows="3" onChange={changeBody} type="text"/>
+          <textarea id="addStuff" name="date" placeholder="Add Body Here" defaultValue={request.data} rows="3" onChange={changeBody} type="text"/>
         </div>
       </form>
     );
